@@ -210,33 +210,84 @@
         );
       });
 
-      // Share invitation
-      $("shareButton").addEventListener("click", async () => {
-        const dateText = $("eventDate").textContent;
+      
+// Share invitation
+$("shareButton").addEventListener("click", async () => {
+  const dateText = $("eventDate").textContent;
 
-        const message = currentLanguage === "mr"
-          ? `${couple} यांच्या साखरपुड्याला आपण सहकुटुंब उपस्थित राहावे, ही विनंती!\n${dateText}\nवेळ: ${eventConfig.eventTimeDisplay}\n${eventConfig.venueName}\n${eventConfig.venueAddress}\n\nआपल्या उपस्थितीची आम्ही आतुरतेने वाट पाहत आहोत!`
-          : `${couple} invite you to celebrate their engagement!\n${dateText}\n${eventConfig.eventTimeDisplay}\n${eventConfig.venueName}\n${eventConfig.venueAddress}\n\nWe look forward to celebrating with you!`;
+  const message = currentLanguage === "mr"
+    ? `${couple} यांच्या साखरपुड्याला आपण सहकुटुंब उपस्थित राहावे, ही विनंती!\n${dateText}\nवेळ: ${eventConfig.eventTimeDisplay}\n${eventConfig.venueName}\n${eventConfig.venueAddress}\n\nआपल्या उपस्थितीची आम्ही आतुरतेने वाट पाहत आहोत!`
+    : `${couple} invite you to celebrate their engagement!\n${dateText}\n${eventConfig.eventTimeDisplay}\n${eventConfig.venueName}\n${eventConfig.venueAddress}\n\nWe look forward to celebrating with you!`;
 
-        if (navigator.share) {
-          try {
-            await navigator.share({
-              title: `${couple} — Engagement Invitation`,
-              text: message,
-              url: location.href
-            });
-          } catch (error) {
-            if (error.name !== "AbortError") {
-              toast("Sharing was unavailable on this device.");
-            }
-          }
-        } else {
-          const whatsappURL =
-            `https://wa.me/?text=${encodeURIComponent(message + "\n" + location.href)}`;
+  const invitationURL = "https://invitebyamitandayusha.online/";
+  const imageURL = new URL(
+    "assets/share-preview.jpg",
+    invitationURL
+  ).href;
 
-          window.open(whatsappURL, "_blank", "noopener");
-        }
+  try {
+    // Fetch the invitation preview image
+    const response = await fetch(imageURL);
+
+    if (!response.ok) {
+      throw new Error("Could not load invitation image.");
+    }
+
+    const blob = await response.blob();
+
+    const imageFile = new File(
+      [blob],
+      "assets/couple-photo-1",
+      { type: blob.type || "image/png" }
+    );
+
+    const shareData = {
+      title: `${couple} — Engagement Invitation`,
+      text: `${message}\n\nView invitation: ${invitationURL}`,
+      files: [imageFile]
+    };
+
+    // Share image + invitation message + link
+    if (
+      navigator.share &&
+      navigator.canShare &&
+      navigator.canShare({ files: [imageFile] })
+    ) {
+      await navigator.share(shareData);
+    } 
+    // Fallback: share the invitation link
+    else if (navigator.share) {
+      await navigator.share({
+        title: `${couple} — Engagement Invitation`,
+        text: message,
+        url: invitationURL
       });
+    } 
+    // WhatsApp fallback
+    else {
+      const whatsappURL =
+        `https://wa.me/?text=${encodeURIComponent(
+          message + "\n\n" + invitationURL
+        )}`;
+
+      window.open(whatsappURL, "_blank", "noopener");
+    }
+
+  } catch (error) {
+    if (error.name !== "AbortError") {
+      console.error("Sharing failed:", error);
+
+      // Fallback to WhatsApp link sharing
+      const whatsappURL =
+        `https://wa.me/?text=${encodeURIComponent(
+          message + "\n\n" + invitationURL
+        )}`;
+
+      window.open(whatsappURL, "_blank", "noopener");
+      toast("Sharing image was unavailable. Sharing invitation link instead.");
+    }
+  }
+});
 
       // Reveal animations
       const observer = "IntersectionObserver" in window
