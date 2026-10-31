@@ -1,0 +1,1317 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123c2d">
+  <meta name="description" content="Engagement Ceremony of Amit and Ayusha">
+  <title>Amit & Ayusha | Engagement Invitation</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Hind:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green: #123c2d;
+      --green-deep: #0b2a20;
+      --green-soft: #285744;
+      --gold: #c9a45d;
+      --gold-light: #ead7a5;
+      --cream: #fbf7ed;
+      --paper: #fffdf7;
+      --ink: #263b30;
+      --muted: #7d8275;
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "Montserrat", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--cream);
+      font-family: var(--sans);
+      overflow-x: hidden;
+    }
+
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
+
+    .topbar {
+      min-height: 76px;
+      padding: 0 clamp(20px, 5vw, 70px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--green-deep);
+      color: var(--gold-light);
+      position: relative;
+      z-index: 2;
+    }
+
+    .monogram {
+      color: var(--gold-light);
+      font: 600 27px var(--serif);
+      letter-spacing: 2px;
+      text-decoration: none;
+    }
+
+    .monogram span {
+      color: #fff8e8;
+      font-style: italic;
+    }
+
+    .topbar-note {
+      font-size: 9px;
+      letter-spacing: 3px;
+      opacity: .8;
+    }
+
+    .language-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      padding: 3px;
+      border: 1px solid #8c7849;
+      border-radius: 24px;
+      background: rgba(255,255,255,.035);
+    }
+
+    .language-option {
+      border: 0;
+      border-radius: 20px;
+      padding: 7px 11px;
+      color: var(--gold-light);
+      background: transparent;
+      cursor: pointer;
+      font-size: 11px;
+      transition: background .2s, color .2s;
+    }
+
+    .language-option.active {
+      background: var(--gold-light);
+      color: var(--green-deep);
+      font-weight: 700;
+    }
+
+    .language-option:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+    }
+
+    .section-shell {
+      width: min(100% - 34px, 1000px);
+      margin-inline: auto;
+    }
+
+    .hero {
+      min-height: 680px;
+      margin-top: 24px;
+      padding: 64px 24px 34px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fdf8e9;
+      background: radial-gradient(ellipse at center, #24533e 0%, var(--green) 56%, var(--green-deep) 100%);
+      border: 1px solid var(--gold);
+      outline: 1px solid #d8bc7c;
+      outline-offset: -9px;
+      overflow: hidden;
+    }
+
+    .hero::before, .hero::after {
+      content: "❧";
+      position: absolute;
+      color: var(--gold);
+      opacity: .55;
+      font-size: 150px;
+      line-height: 1;
+    }
+
+    .hero::before {
+      top: 12px;
+      left: 18px;
+      transform: rotate(-42deg);
+    }
+
+    .hero::after {
+      bottom: 10px;
+      right: 18px;
+      transform: rotate(138deg);
+    }
+
+    .ornament {
+      color: var(--gold);
+      letter-spacing: 14px;
+      font-size: 17px;
+    }
+
+    .ornament-top { margin-bottom: 24px; }
+
+    .eyebrow {
+      color: var(--gold);
+      font-size: 10px;
+      letter-spacing: 3.5px;
+      margin: 0 0 16px;
+      font-weight: 600;
+    }
+
+    .intro {
+      font-family: var(--serif);
+      font-size: 22px;
+      margin: 0 0 15px;
+      color: #f1e8d3;
+      font-style: italic;
+    }
+
+    .names {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font: 500 clamp(60px, 11vw, 104px)/.78 var(--serif);
+      letter-spacing: -2px;
+      color: #fff9e9;
+    }
+
+    .ampersand {
+      font-size: .52em;
+      font-style: italic;
+      color: var(--gold-light);
+      line-height: 1.25;
+    }
+
+    .gold-rule {
+      width: 180px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--gold);
+      margin: 28px auto 18px;
+    }
+
+    .gold-rule::before, .gold-rule::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(90deg, transparent, var(--gold));
+    }
+
+    .gold-rule::after { transform: rotate(180deg); }
+
+    .hero-copy {
+      font: 400 21px/1.5 var(--serif);
+      color: #f2ead8;
+      margin: 0 0 25px;
+    }
+
+    .date-pill {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      border-top: 1px solid #a98b4f;
+      border-bottom: 1px solid #a98b4f;
+      padding: 11px 18px;
+      color: var(--gold-light);
+      font-size: 10px;
+      letter-spacing: 2px;
+    }
+
+    .date-icon { font-size: 15px; }
+
+    .open-invite {
+      margin-top: 27px;
+      background: var(--gold-light);
+      color: var(--green-deep);
+      border: 0;
+      padding: 14px 21px;
+      font-size: 10px;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: transform .25s, background .25s;
+    }
+
+    .open-invite:hover {
+      transform: translateY(-2px);
+      background: #f5e8c7;
+    }
+
+    .open-invite span { color: #9c7938; margin: 0 7px; }
+
+    .hero-bottom {
+      position: absolute;
+      bottom: 22px;
+      font-size: 8px;
+      letter-spacing: 3px;
+      color: #d3bd86;
+    }
+
+    .details {
+      padding: 100px 0 72px;
+      text-align: center;
+    }
+
+    .details h2, .closing h2 {
+      margin: 0;
+      font: 500 clamp(40px, 7vw, 61px)/.95 var(--serif);
+      color: var(--green);
+    }
+
+    .details h2 em, .closing h2 em, .gallery h2 em {
+      color: #a47f3e;
+      font-weight: 400;
+    }
+
+    .section-copy {
+      color: var(--muted);
+      font: 18px var(--serif);
+      margin: 20px 0 37px;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      max-width: 790px;
+      margin: 0 auto;
+    }
+
+    .detail-card {
+      background: var(--paper);
+      border: 1px solid #e4d8b9;
+      padding: 30px 24px 28px;
+      min-height: 235px;
+      box-shadow: 0 12px 35px #40351a08;
+    }
+
+    .detail-symbol {
+      color: #a78342;
+      font-size: 27px;
+      margin-bottom: 12px;
+    }
+
+    .card-label {
+      color: #9a7b42;
+      font-size: 9px;
+      letter-spacing: 2.5px;
+      margin: 0 0 10px;
+    }
+
+    .detail-card h3 {
+      font: 600 29px/1.05 var(--serif);
+      color: var(--green);
+      margin: 0 0 10px;
+    }
+
+    .detail-card p:not(.card-label) {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .text-button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 9px 0;
+      border: 0;
+      border-bottom: 1px solid var(--gold);
+      background: transparent;
+      color: var(--green);
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 10px;
+      letter-spacing: .6px;
+    }
+
+    .family-note {
+      margin: 42px auto 0;
+      max-width: 700px;
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      color: #6c7569;
+      font: italic 20px/1.5 var(--serif);
+    }
+
+    .family-note p { margin: 0; }
+
+    .family-line {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      flex: 0 0 40px;
+    }
+
+    .gallery {
+      padding: 28px 0 88px;
+      text-align: center;
+    }
+
+    .gallery h2 {
+      margin: 0;
+      font: 500 clamp(40px, 7vw, 61px)/.95 var(--serif);
+      color: var(--green);
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr 1fr;
+      gap: 15px;
+      max-width: 900px;
+      margin: 30px auto 0;
+      align-items: stretch;
+    }
+
+    .photo-frame {
+      position: relative;
+      min-height: 270px;
+      margin: 0;
+      border: 1px solid #d8c28e;
+      padding: 7px;
+      background: #fffdf7;
+      box-shadow: 0 12px 30px #40351a0a;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      min-height: 255px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-placeholder {
+      display: none;
+      width: 100%;
+      min-height: 255px;
+      height: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      color: var(--green);
+      background: linear-gradient(135deg, #e8dfc8, #fbf7ed 55%, #d9e0d2);
+    }
+
+    .photo-placeholder span { color: #a78342; font-size: 33px; }
+
+    .photo-placeholder strong {
+      font: 500 28px var(--serif);
+    }
+
+    .photo-placeholder small {
+      font: 9px var(--sans);
+      color: #7c806e;
+      letter-spacing: .4px;
+    }
+
+    .closing {
+      background: #f1ead9;
+      border-top: 1px solid #e0d2ad;
+      padding: 76px 22px 72px;
+      text-align: center;
+      max-width: none;
+      width: 100%;
+    }
+
+    .closing-flower {
+      font-size: 35px;
+      color: #b28c47;
+      margin-bottom: 15px;
+    }
+
+    .closing h2 { font-size: clamp(45px, 7vw, 66px); }
+
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin: 34px auto 22px;
+    }
+
+    .countdown div {
+      min-width: 78px;
+      padding: 13px 10px;
+      border: 1px solid #d6c69f;
+      background: #fbf7ed;
+    }
+
+    .countdown strong {
+      display: block;
+      color: var(--green);
+      font: 600 30px var(--serif);
+    }
+
+    .countdown span {
+      display: block;
+      color: #9b824f;
+      font-size: 8px;
+      letter-spacing: 1.4px;
+      margin-top: 5px;
+    }
+
+    .closing-copy {
+      font: 19px var(--serif);
+      color: #70766b;
+      margin: 22px 0 27px;
+    }
+
+    .share-button {
+      border: 0;
+      padding: 14px 22px;
+      background: var(--green);
+      color: #fff8e8;
+      cursor: pointer;
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
+    .share-button span { margin-left: 12px; color: var(--gold-light); }
+
+    .signature {
+      margin: 31px 0 0;
+      color: #7e806f;
+      font: italic 19px var(--serif);
+    }
+
+    .signature .signature-names {
+      display: block;
+      color: var(--green);
+      font-size: 29px;
+      margin-top: 4px;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      padding: 23px 12px;
+      background: var(--green-deep);
+      color: #d8c28e;
+      font-size: 8px;
+      letter-spacing: 2px;
+    }
+
+    .footer-heart { color: #cba85f; }
+
+    .ambient {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 5;
+    }
+
+    .petal {
+      position: absolute;
+      top: -10%;
+      color: #c8a65e;
+      opacity: 0;
+      animation: fall 15s linear infinite;
+      text-shadow: 0 2px 6px #0001;
+    }
+
+    .petal-1 { left: 8%; animation-delay: 0s; font-size: 17px; }
+    .petal-2 { left: 28%; animation-delay: 4s; font-size: 13px; }
+    .petal-3 { left: 52%; animation-delay: 7s; font-size: 20px; }
+    .petal-4 { left: 70%; animation-delay: 2s; font-size: 15px; }
+    .petal-5 { left: 88%; animation-delay: 9s; font-size: 19px; }
+    .petal-6 { left: 42%; animation-delay: 11s; font-size: 12px; }
+
+    @keyframes fall {
+      0% { transform: translateY(-5vh) rotate(0); opacity: 0; }
+      10% { opacity: .35; }
+      85% { opacity: .3; }
+      100% { transform: translateY(110vh) rotate(260deg); opacity: 0; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 20px;
+      transform: translate(-50%, 20px);
+      background: var(--green-deep);
+      color: white;
+      padding: 12px 17px;
+      border: 1px solid var(--gold);
+      font-size: 12px;
+      opacity: 0;
+      pointer-events: none;
+      transition: all .25s;
+      z-index: 10;
+      max-width: calc(100% - 30px);
+      text-align: center;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    /* Language visibility */
+    [data-lang="mr"] { display: none; }
+
+    .language-marathi [data-lang="en"] { display: none; }
+
+    .language-marathi [data-lang="mr"] {
+      display: inline;
+      font-family: "Hind", sans-serif;
+      letter-spacing: 0;
+    }
+
+    .language-marathi .eyebrow[data-lang="mr"],
+    .language-marathi p[data-lang="mr"],
+    .language-marathi h2 span[data-lang="mr"] {
+      line-height: 1.65;
+    }
+
+    .language-marathi .family-note {
+      font-family: "Hind", sans-serif;
+      font-style: normal;
+      font-size: 17px;
+    }
+
+    .language-marathi .hero-copy {
+      font-family: "Hind", sans-serif;
+      font-size: 19px;
+      line-height: 1.7;
+    }
+
+    .language-marathi .details h2,
+    .language-marathi .gallery h2,
+    .language-marathi .closing h2 {
+      font-family: "Hind", sans-serif;
+      line-height: 1.5;
+    }
+
+    .language-marathi .section-copy,
+    .language-marathi .closing-copy {
+      font-family: "Hind", sans-serif;
+      line-height: 1.7;
+    }
+
+    .language-marathi .detail-card h3 {
+      font-family: "Hind", sans-serif;
+    }
+
+    .language-marathi .photo-placeholder strong {
+      font-family: "Hind", sans-serif;
+    }
+
+    .language-marathi .signature {
+      font-family: "Hind", sans-serif;
+      font-style: normal;
+    }
+
+    @media (max-width: 600px) {
+      .topbar {
+        height: auto;
+        min-height: 64px;
+        padding: 10px 12px;
+        gap: 8px;
+      }
+
+      .monogram { font-size: 23px; }
+      .topbar-note { display: none; }
+      .language-toggle { flex-shrink: 0; }
+      .language-option { padding: 7px 9px; }
+
+      .hero {
+        min-height: 600px;
+        margin-top: 12px;
+        padding: 55px 18px 45px;
+      }
+
+      .hero::before, .hero::after { font-size: 90px; }
+      .ornament-top { margin-bottom: 24px; }
+      .intro { font-size: 19px; }
+      .names { font-size: clamp(61px, 18vw, 84px); }
+      .hero-copy { font-size: 19px; }
+      .hero-bottom { font-size: 7px; letter-spacing: 1.5px; bottom: 17px; }
+
+      .details { padding: 72px 0 56px; }
+      .details-grid { grid-template-columns: 1fr; }
+      .detail-card { min-height: auto; padding: 27px 18px; }
+      .section-copy { line-height: 1.5; }
+      .family-note { font-size: 17px; gap: 9px; }
+      .family-line { flex-basis: 20px; width: 20px; }
+
+      .photo-grid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+      }
+
+      .photo-frame { min-height: 240px; }
+      .photo-frame img, .photo-placeholder { min-height: 225px; }
+      .gallery { padding: 5px 0 65px; }
+
+      .closing { padding: 62px 14px; }
+      .countdown { gap: 6px; }
+      .countdown div {
+        min-width: 0;
+        flex: 1;
+        padding: 12px 4px;
+      }
+
+      .countdown strong { font-size: 26px; }
+      .countdown span { font-size: 7px; letter-spacing: .8px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal { opacity: 1; transform: none; }
+    }
+	.countdown span {
+  display: block;
+  color: #9b824f;
+  font-size: 8px;
+  letter-spacing: 1.4px;
+  margin-top: 5px;
+}
+/* Language visibility */
+[data-lang="mr"] { display: none; }
+
+.language-marathi [data-lang="en"] { display: none; }
+
+.language-marathi [data-lang="mr"] {
+  display: inline;
+  font-family: "Hind", sans-serif;
+  letter-spacing: 0;
+}
+/* Countdown language visibility fix */
+.countdown [data-lang="mr"] {
+  display: none;
+}
+
+.language-marathi .countdown [data-lang="en"] {
+  display: none;
+}
+
+.language-marathi .countdown [data-lang="mr"] {
+  display: block;
+}
+  </style>
+</head>
+
+<body>
+  <div class="ambient" aria-hidden="true">
+    <span class="petal petal-1">✿</span>
+    <span class="petal petal-2">❋</span>
+    <span class="petal petal-3">✿</span>
+    <span class="petal petal-4">❋</span>
+    <span class="petal petal-5">✿</span>
+    <span class="petal petal-6">❋</span>
+  </div>
+
+  <header class="topbar">
+    <a class="monogram" href="#home" aria-label="Amit and Ayusha home">A <span>&</span> A</a>
+
+    <span class="topbar-note">
+      <span data-lang="en">A CELEBRATION OF LOVE</span>
+      <span data-lang="mr">प्रेमाचा सुंदर सोहळा</span>
+    </span>
+
+    <div class="language-toggle" role="group" aria-label="Select invitation language">
+      <button type="button" class="language-option active" id="langEnglish" aria-pressed="true">EN</button>
+      <button type="button" class="language-option" id="langMarathi" aria-pressed="false">मराठी</button>
+    </div>
+  </header>
+
+  <main id="home">
+
+    <!-- Hero section -->
+    <section class="hero section-shell">
+      <!-- <div class="ornament ornament-top" aria-hidden="true">❦ ❧ ❦</div> -->
+
+      <p class="eyebrow">॥ श्री गणेशाय नमः ॥</p>
+      <p class="eyebrow">॥ श्री ज्योतिबा प्रसन्न ॥</p>
+
+      <p class="intro" data-lang="en">
+        <span data-lang="en">With the blessings of our families</span>
+      </p>
+<p class="intro" data-lang="mr">
+        <span >आमच्या कुटुंबीयांच्या आशीर्वादाने</span>
+		<br>
+		<br>
+      </p>
+      <h1 class="names" data-lang="en" >
+        <span id="personOne">Amit</span>
+        <span class="ampersand">& </span>
+        <span id="personTwo">Ayusha</span>
+      </h1>
+	  <h1 class="names" data-lang="mr" >
+        <span id="personOne">अमित </span>
+		<br>
+        <span class="ampersand"> आणि </span>
+		<br>
+        <span id="personTwo">आयुषा</span>
+      </h1>
+
+      <div class="gold-rule"><span>✦</span></div>
+
+      <p class="hero-copy">
+        <span data-lang="en">
+          Two hearts, one beautiful beginning.<br>
+          We invite you to celebrate our engagement.
+        </span>
+        <span data-lang="mr">
+          दोन मनं, एक सुंदर सुरुवात!<br>
+          आमच्या साखरपुड्याच्या आनंदसोहळ्यात सहभागी व्हा.
+        </span>
+      </p>
+
+      <div class="date-pill">
+        <span class="date-icon">✧</span>
+        <span id="eventDateShort">15 NOVEMBER 2026</span>
+        <span class="date-icon">✧</span>
+      </div>
+
+      <button class="open-invite" id="openInvite" type="button">
+        <span>✦</span>
+        <span data-lang="en">Open Our Invitation</span>
+        <span data-lang="mr">आमंत्रण पहा</span>
+        <span>✦</span>
+      </button>
+
+      <div class="hero-bottom">
+        <span data-lang="en">A LITTLE TRADITION · A LOT OF LOVE</span>
+        <span data-lang="mr">परंपरेचा साज · प्रेमाची साथ</span>
+      </div>
+    </section>
+
+    <!-- Event details -->
+    <section class="details section-shell reveal" id="details">
+
+      <p class="eyebrow">
+        <span data-lang="en">THE BEGINNING OF FOREVER</span>
+        <span data-lang="mr">एका सुंदर प्रवासाची सुरुवात</span>
+      </p>
+
+      <h2>
+        <span data-lang="en">Join us for our <em>engagement</em></span>
+        <span data-lang="mr">आमच्या <em>साखरपुडा सोहळ्यास</em> नक्की या</span>
+      </h2>
+
+      <p class="section-copy">
+        <span data-lang="en">Your presence will make this special day even more memorable.</span>
+        <span data-lang="mr">आपली उपस्थिती आमचा हा खास दिवस अधिक आनंदमय करेल.</span>
+      </p>
+
+      <div class="details-grid">
+
+        <article class="detail-card">
+          <div class="detail-symbol">✧</div>
+
+          <p class="card-label">
+            <span data-lang="en">THE DATE</span>
+            <span data-lang="mr">दिनांक</span>
+          </p>
+
+          <h3 id="eventDate">Sunday, 15 November 2026</h3>
+          <p id="eventTime">11:00 AM onwards</p>
+
+          <button class="text-button" id="calendarButton" type="button">
+            <span data-lang="en">＋ Add to calendar</span>
+            <span data-lang="mr">＋ कॅलेंडरमध्ये जोडा</span>
+          </button>
+        </article>
+
+        <article class="detail-card">
+          <div class="detail-symbol">⌖</div>
+
+          <p class="card-label">
+            <span data-lang="en">THE VENUE</span>
+            <span data-lang="mr">स्थळ</span>
+          </p>
+           <span data-lang="en">
+          <h3 id="venueName" >Parvati Marriage Hall</h3>		  
+          <p id="venueAddress" >Tisgaon Road, Kalyan East, Kalyan – 421306</p>
+		 </span>
+		 <span data-lang="mr">
+		  <h3 id="venueName" >पार्वती मॅरेज हॉल</h3>
+           <p id="venueAddress">तिसगाव रोड, कल्याण पूर्व, कल्याण – ४२१३०६</p>
+		   </span>
+          <a class="text-button" id="mapButton"
+             href="https://www.google.com/maps/search/?api=1&query=Parvati%20Marriage%20Hall%2C%20Tisgaon%20Road%2C%20Kalyan%20East%2C%20Kalyan%20421306"
+             target="_blank" rel="noopener">
+            <span data-lang="en">↗ Get directions</span>
+            <span data-lang="mr">↗ स्थळाचा मार्ग पहा</span>
+          </a>
+        </article>
+
+      </div>
+
+      <div class="family-note">
+        <span class="family-line"></span>
+
+        <p>
+          <span data-lang="en">
+            With the blessings of our families, we invite you to celebrate
+            this beautiful beginning. Your presence and blessings will make
+            this occasion truly special.
+          </span>
+          <span data-lang="mr">
+            आमच्या कुटुंबीयांच्या आशीर्वादाने आयोजित या मंगलमय साखरपुडा
+            सोहळ्यास आपण सहकुटुंब उपस्थित राहून वधू-वरांना शुभाशीर्वाद
+            द्यावेत, ही नम्र विनंती.
+          </span>
+        </p>
+
+        <span class="family-line"></span>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery section-shell reveal" id="gallery">
+
+      <p class="eyebrow">
+        <span data-lang="en">OUR MOMENTS</span>
+        <span data-lang="mr">आमच्या आठवणी</span>
+      </p>
+
+      <h2>
+        <span data-lang="en">A little glimpse of <em>us</em></span>
+        <span data-lang="mr">आमच्या सुंदर <em>आठवणींची</em> एक झलक</span>
+      </h2>
+
+      <p class="section-copy">
+        <span data-lang="en">A beautiful beginning, a lifetime of love.</span>
+        <span data-lang="mr">सुंदर सुरुवात, प्रेमाची आयुष्यभराची साथ.</span>
+      </p>
+
+      <div class="photo-grid">
+
+        <figure class="photo-frame photo-large">
+          <img src="assets/couple-photo-1.png"
+               alt="Amit and Ayusha — favourite photo 1"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+
+          <div class="photo-placeholder">
+            <span>✿</span>
+            <strong>
+              <span data-lang="en">Our Story</span>
+              <span data-lang="mr">आमची कहाणी</span>
+            </strong>
+            <small>
+              <span data-lang="en">Add couple-photo-1.png</span>
+              <span data-lang="mr">येथे पहिला फोटो जोडा</span>
+            </small>
+          </div>
+        </figure>
+
+        <figure class="photo-frame">
+          <img src="assets/couple-photo-2.png"
+               alt="Amit and Ayusha — favourite photo 2"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+
+          <div class="photo-placeholder">
+            <span>❦</span>
+            <strong>
+              <span data-lang="en">Sweet Moments</span>
+              <span data-lang="mr">सुंदर क्षण</span>
+            </strong>
+            <small>
+              <span data-lang="en">Add couple-photo-2.png</span>
+              <span data-lang="mr">येथे दुसरा फोटो जोडा</span>
+            </small>
+          </div>
+        </figure>
+
+        <figure class="photo-frame">
+          <img src="assets/couple-photo-3.jpg"
+               alt="Amit and Ayusha — favourite photo 3"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+
+          <div class="photo-placeholder">
+            <span>✧</span>
+            <strong>
+              <span data-lang="en">Forever Begins</span>
+              <span data-lang="mr">आयुष्यभराच्या साथीची सुरुवात</span>
+            </strong>
+            <small>
+              <span data-lang="en">Add couple-photo-3.jpg</span>
+              <span data-lang="mr">येथे तिसरा फोटो जोडा</span>
+            </small>
+          </div>
+        </figure>
+
+      </div>
+    </section>
+
+    <!-- Closing section -->
+    <section class="closing section-shell reveal">
+
+      <div class="closing-flower" aria-hidden="true">❀</div>
+
+      <p class="eyebrow">
+        <span data-lang="en">✨ SAVE THE DATE ✨</span>
+        <span data-lang="mr">✨ दिनांक लक्षात ठेवा ✨</span>
+      </p>
+
+      <h2>
+        <span data-lang="en">Love is sweeter<br>when <em>shared.</em></span>
+        <span data-lang="mr">प्रेमाचा आनंद<br><em>सर्वांसोबत साजरा करूया.</em></span>
+      </h2>
+
+      
+	  <div class="countdown" id="countdown" aria-live="polite">
+
+  <div>
+    <strong id="days">—</strong>
+    <span data-lang="en">DAYS</span>
+    <span data-lang="mr">दिवस</span>
+  </div>
+
+  <div>
+    <strong id="hours">—</strong>
+    <span data-lang="en">HOURS</span>
+    <span data-lang="mr">तास</span>
+  </div>
+
+  <div>
+    <strong id="minutes">—</strong>
+    <span data-lang="en">MINUTES</span>
+    <span data-lang="mr">मिनिटे</span>
+  </div>
+
+  <div>
+    <strong id="seconds">—</strong>
+    <span data-lang="en">SECONDS</span>
+    <span data-lang="mr">सेकंद</span>
+  </div>
+
+</div>
+
+      <p class="closing-copy">
+        <span data-lang="en">
+          We can't wait to celebrate this new chapter with you.
+        </span>
+        <span data-lang="mr">
+          आमच्या आयुष्यातील या नव्या प्रवासाची सुरुवात आपल्या उपस्थितीत
+          साजरी करण्यास आम्ही उत्सुक आहोत.
+        </span>
+      </p>
+
+      <button class="share-button" id="shareButton" type="button">
+        <span data-lang="en">Share the invitation</span>
+        <span data-lang="mr">आमंत्रण शेअर करा</span>
+        <span>↗</span>
+      </button>
+
+      <p class="signature" data-lang="en">
+        <span>With love,</span>
+		<span class="signature-names" id="signatureNames">Amit & Ayusha</span>
+      </p>
+	  
+	 <p class="signature" data-lang="mr">
+	 <br>
+	 <br>
+        <span>सप्रेम,</span>       
+		<br>
+		<span class="signature-names" id="signatureNames">अमित आणि आयुषा</span>
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <span>
+      <span data-lang="en">MADE WITH LOVE</span>
+      <span data-lang="mr">प्रेमाने तयार केले</span>
+    </span>
+    <span class="footer-heart">♥</span>
+    <span data-lang="en">ACHARE & MOHITE FAMILY</span>
+	 <span data-lang="mr">आचरे आणि मोहिते कुटुंब</span>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (() => {
+      "use strict";
+
+      // Event configuration
+      const eventConfig = {
+        personOne: "Amit",
+        personTwo: "Ayusha",
+        eventDateISO: "2026-11-15",
+        eventTime24: "11:00",
+        eventTimeDisplay: "11:00 AM onwards",
+        venueName: "Parvati Marriage Hall",
+        venueAddress: "Tisgaon Road, Kalyan East, Kalyan – 421306",
+        mapQuery: "Parvati Marriage Hall, Tisgaon Road, Kalyan East, Kalyan 421306"
+      };
+
+      const $ = id => document.getElementById(id);
+
+      const couple = `${eventConfig.personOne} & ${eventConfig.personTwo}`;
+      let currentLanguage = "en";
+
+      // Set names and event details
+      $("personOne").textContent = eventConfig.personOne;
+      $("personTwo").textContent = eventConfig.personTwo;
+      $("signatureNames").textContent = couple;
+
+      $("eventTime").textContent = eventConfig.eventTimeDisplay;
+      $("venueName").textContent = eventConfig.venueName;
+      $("venueAddress").textContent = eventConfig.venueAddress;
+
+      // Update event date according to selected language
+      function updateEventDate() {
+        const date = new Date(`${eventConfig.eventDateISO}T12:00:00`);
+        const locale = currentLanguage === "mr" ? "mr-IN" : "en-IN";
+
+        $("eventDate").textContent = date.toLocaleDateString(locale, {
+          weekday: "long",
+          day: "numeric",
+          month: "long",
+          year: "numeric"
+        });
+
+        $("eventDateShort").textContent = date.toLocaleDateString(locale, {
+          day: "numeric",
+          month: "long",
+          year: "numeric"
+        }).toLocaleUpperCase(locale);
+      }
+
+      // Language switch: HTML contains all translated text.
+      function applyLanguage(language) {
+        currentLanguage = language === "mr" ? "mr" : "en";
+
+        document.documentElement.lang = currentLanguage;
+        document.body.classList.toggle(
+          "language-marathi",
+          currentLanguage === "mr"
+        );
+
+        $("langEnglish").classList.toggle(
+          "active",
+          currentLanguage === "en"
+        );
+
+        $("langMarathi").classList.toggle(
+          "active",
+          currentLanguage === "mr"
+        );
+
+        $("langEnglish").setAttribute(
+          "aria-pressed",
+          String(currentLanguage === "en")
+        );
+
+        $("langMarathi").setAttribute(
+          "aria-pressed",
+          String(currentLanguage === "mr")
+        );
+
+        updateEventDate();
+
+        try {
+          localStorage.setItem("amitAyushaLanguage", currentLanguage);
+        } catch (error) {
+          // Language switching still works if localStorage is unavailable.
+        }
+      }
+
+      $("langEnglish").addEventListener("click", () => applyLanguage("en"));
+      $("langMarathi").addEventListener("click", () => applyLanguage("mr"));
+
+      let savedLanguage = "en";
+
+      try {
+        savedLanguage = localStorage.getItem("amitAyushaLanguage") || "en";
+      } catch (error) {
+        savedLanguage = "en";
+      }
+
+      applyLanguage(savedLanguage);
+
+      // Toast notification
+      const toast = message => {
+        const element = $("toast");
+        element.textContent = message;
+        element.classList.add("show");
+
+        window.clearTimeout(toast.timer);
+
+        toast.timer = window.setTimeout(() => {
+          element.classList.remove("show");
+        }, 2800);
+      };
+
+      // Open invitation button
+      $("openInvite").addEventListener("click", () => {
+        $("details").scrollIntoView({ behavior: "smooth" });
+      });
+
+      // Countdown
+      const targetDate = new Date(
+        `${eventConfig.eventDateISO}T${eventConfig.eventTime24}:00`
+      );
+
+      function updateCountdown() {
+        const difference = targetDate.getTime() - Date.now();
+
+        if (difference <= 0) {
+          ["days", "hours", "minutes", "seconds"].forEach(id => {
+            $(id).textContent = "0";
+          });
+          return;
+        }
+
+        const units = {
+          days: 86400000,
+          hours: 3600000,
+          minutes: 60000,
+          seconds: 1000
+        };
+
+        let remaining = difference;
+
+        Object.entries(units).forEach(([id, size]) => {
+          $(id).textContent = String(
+            Math.floor(remaining / size)
+          ).padStart(2, "0");
+
+          remaining %= size;
+        });
+      }
+
+      updateCountdown();
+      window.setInterval(updateCountdown, 1000);
+
+      // Google Maps directions
+      $("mapButton").href =
+        `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(eventConfig.mapQuery)}`;
+
+      // Add to calendar
+      $("calendarButton").addEventListener("click", () => {
+        const start = new Date(
+          `${eventConfig.eventDateISO}T${eventConfig.eventTime24}:00`
+        );
+
+        const end = new Date(start.getTime() + 2 * 60 * 60 * 1000);
+
+        const stamp = date =>
+          date.getFullYear().toString() +
+          String(date.getMonth() + 1).padStart(2, "0") +
+          String(date.getDate()).padStart(2, "0") +
+          "T" +
+          String(date.getHours()).padStart(2, "0") +
+          String(date.getMinutes()).padStart(2, "0") +
+          "00";
+
+        const ics = [
+          "BEGIN:VCALENDAR",
+          "VERSION:2.0",
+          "PRODID:-//Amit and Ayusha//Engagement//EN",
+          "BEGIN:VEVENT",
+          `UID:${Date.now()}@amit-ayusha-invite`,
+          `DTSTAMP:${stamp(new Date())}`,
+          `DTSTART:${stamp(start)}`,
+          `DTEND:${stamp(end)}`,
+          `SUMMARY:${couple} - Engagement`,
+          `LOCATION:${eventConfig.venueName}, ${eventConfig.venueAddress}`,
+          "DESCRIPTION:We look forward to celebrating with you.",
+          "END:VEVENT",
+          "END:VCALENDAR"
+        ].join("\r\n");
+
+        const blob = new Blob([ics], {
+          type: "text/calendar;charset=utf-8"
+        });
+
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+
+        link.href = url;
+        link.download = "amit-ayusha-engagement.ics";
+        link.click();
+
+        URL.revokeObjectURL(url);
+
+        toast(
+          currentLanguage === "mr"
+            ? "कॅलेंडरचे आमंत्रण डाउनलोड झाले."
+            : "Calendar invitation downloaded."
+        );
+      });
+
+      // Share invitation
+      $("shareButton").addEventListener("click", async () => {
+        const dateText = $("eventDate").textContent;
+
+        const message = currentLanguage === "mr"
+          ? `${couple} यांच्या साखरपुड्याला आपण सहकुटुंब उपस्थित राहावे, ही विनंती!\n${dateText}\nवेळ: ${eventConfig.eventTimeDisplay}\n${eventConfig.venueName}\n${eventConfig.venueAddress}\n\nआपल्या उपस्थितीची आम्ही आतुरतेने वाट पाहत आहोत!`
+          : `${couple} invite you to celebrate their engagement!\n${dateText}\n${eventConfig.eventTimeDisplay}\n${eventConfig.venueName}\n${eventConfig.venueAddress}\n\nWe look forward to celebrating with you!`;
+
+        if (navigator.share) {
+          try {
+            await navigator.share({
+              title: `${couple} — Engagement Invitation`,
+              text: message,
+              url: location.href
+            });
+          } catch (error) {
+            if (error.name !== "AbortError") {
+              toast("Sharing was unavailable on this device.");
+            }
+          }
+        } else {
+          const whatsappURL =
+            `https://wa.me/?text=${encodeURIComponent(message + "\n" + location.href)}`;
+
+          window.open(whatsappURL, "_blank", "noopener");
+        }
+      });
+
+      // Reveal animations
+      const observer = "IntersectionObserver" in window
+        ? new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          }, { threshold: 0.12 })
+        : null;
+
+      document.querySelectorAll(".reveal").forEach(element => {
+        if (observer) {
+          observer.observe(element);
+        } else {
+          element.classList.add("visible");
+        }
+      });
+
+    })();
+  </script>
+</body>
+</html>
