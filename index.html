@@ -67,7 +67,7 @@
     }
 
     .topbar-note {
-      font-size: 9px;
+      font-size: 13px;
       letter-spacing: 3px;
       opacity: .8;
     }
@@ -158,7 +158,7 @@
 
     .eyebrow {
       color: var(--gold);
-      font-size: 10px;
+      font-size: 15px;
       letter-spacing: 3.5px;
       margin: 0 0 16px;
       font-weight: 600;
@@ -470,7 +470,7 @@
       background: var(--green);
       color: #fff8e8;
       cursor: pointer;
-      font-size: 10px;
+      font-size: 12px;
       letter-spacing: 1px;
     }
 
@@ -497,7 +497,7 @@
       padding: 23px 12px;
       background: var(--green-deep);
       color: #d8c28e;
-      font-size: 8px;
+      font-size: 12px;
       letter-spacing: 2px;
     }
 
@@ -1075,7 +1075,9 @@
   </footer>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
+<audio id="invitationAudio" preload="auto" autoplay loop playsinline aria-hidden="true" tabindex="-1">
+    <source src="assets/engagement-song.mp3" type="audio/mpeg">
+  </audio>
   <script>
     (() => {
       "use strict";
@@ -1315,6 +1317,21 @@
           window.open(whatsappURL, "_blank", "noopener");
         }
       });
+// Background engagement music: attempt autoplay on load, then retry on the
+  // first guest interaction if the browser blocks autoplay with sound.
+  const invitationAudio = $("invitationAudio");
+  if (invitationAudio) {
+    invitationAudio.volume = 0.7;
+    const tryStartMusic = () => {
+      if (!invitationAudio || !invitationAudio.paused) return;
+      const playPromise = invitationAudio.play();
+      if (playPromise && typeof playPromise.catch === "function") playPromise.catch(() => {});
+    };
+    tryStartMusic();
+    document.addEventListener("pointerdown", tryStartMusic, { once: true, passive: true });
+    document.addEventListener("keydown", tryStartMusic, { once: true });
+    $("openInvite").addEventListener("click", tryStartMusic);
+  }
 
       // Reveal animations
       const observer = "IntersectionObserver" in window
